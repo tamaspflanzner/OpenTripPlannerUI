@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  otp:
+    build:
+      context: ./otp
+      dockerfile: Dockerfile
+    container_name: otp
+    ports:
+      - "8080:8080"
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: otp-ui
+    ports:
+      - "9966:9966"
+    depends_on:
+      - otp
